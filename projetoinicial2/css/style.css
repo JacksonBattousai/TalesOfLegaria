@@ -1,0 +1,13 @@
+body {
+ background-image: url("papel.jpg");
+background-size: 50%;
+margin-left: 1%;
+margin-top:  17%;
+background-repeat: no-repeat;
+}
+#botao{
+	font-size:19px;
+	 padding:17px; 
+	 width:auto; 
+	 height:auto;
+}

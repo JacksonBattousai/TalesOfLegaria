@@ -3,33 +3,35 @@ var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'phaser-example', { preload:
 
 function preload() {
 
-    //game.load.image('background','assets/tests/debug-grid-1920x1920.png');
-    game.load.image('background','assets/tests/mapa.png');
-    game.load.image('player','assets/sprites/bikkuriman.png');
-    game.load.image('player2','assets/sprites/wasp.png');
-    game.load.spritesheet('dude', 'assets/dude.png', 32, 48);
+     game.load.image('background','assets/tests/mapa.png');
 
+    game.load.spritesheet('player','assets/sprites/alex/alex-down.png',32,32,84);
+ 
 }
 
 var player;
 var player2;
 var cursors;
+var facing = '';
 
 function create() {
 
-    game.add.tileSprite(0, 0, 1920, 1920, 'background');
+game.add.tileSprite(0, 0, 1920, 1920, 'background');
 
     game.world.setBounds(0, 0, 1920, 1920);
 
     game.physics.startSystem(Phaser.Physics.P2JS);
 
 
-	player = game.add.sprite(32, game.world.height - 150, 'dude');
-	// Determina como será a animação com base nos sprites
-	player.animations.add('left', [0, 1, 2, 3], 10, true);
-	player.animations.add('right', [5, 6, 7, 8], 10, true);
+      player = game.add.sprite(game.world.centerX, game.world.centerY, 'player',1);
+      
+     
+    player.animations.add('down', [1,2,],4, true);
+    player.animations.add('left', [13,14,],5, true);
+    player.animations.add('up', [36,37,],5, true);
+    player.animations.add('right', [25,26,],5, true);
+    
 
-//    player = game.add.sprite(game.world.centerX, game.world.centerY, 'player');
 
     game.physics.p2.enable(player);
 
@@ -37,11 +39,8 @@ function create() {
 
     cursors = game.input.keyboard.createCursorKeys();
 
-    player2 = game.add.sprite(game.world.centerX, game.world.centerY, 'player2');
 
-    game.physics.p2.enable(player2);
 
-    player2.body.fixedRotation = true;
 
     cursors = game.input.keyboard.createCursorKeys();
 
@@ -75,33 +74,48 @@ function update() {
 
     player.body.setZeroVelocity();
 
-    if (cursors.up.isDown)
-    {
+
+
+    if (cursors.up.isDown){
         player.body.moveUp(300)
-    }
-    else if (cursors.down.isDown)
-    {
+
+    if (facing != 'up'){ 
+           player.animations.play('up');
+           facing = 'up';
+            }
+        }
+    else if (cursors.down.isDown){
         player.body.moveDown(300);
+        
+        if (facing != 'down'){ 
+           player.animations.play('down');
+           facing = 'down';
+            }
     }
 
-    if (cursors.left.isDown)
-    {
-        player.body.moveLeft(300);
-	player.animations.play('left');
+    if (cursors.left.isDown){
+        player.body.velocity.x = -300;
+
+
+         if (facing != 'left'){ 
+           player.animations.play('left');
+           facing = 'left';
+            }
+
     }
-    else if (cursors.right.isDown)
-    {
+    else if (cursors.right.isDown){
         player.body.moveRight(300);
-	player.animations.play('right');
-    } else {
-        player.animations.stop();
-        player.frame = 4;
+        if (facing != 'right'){ 
+           player.animations.play('right');
+           facing = 'right';
+            }    
     }
+    
+
 
 }
-
 function render() {
 
-    game.debug.text("Clica aí pra se mecher bundão.", 32, 32);
+    game.debug.text("Beta.", 32, 32);
 
 }

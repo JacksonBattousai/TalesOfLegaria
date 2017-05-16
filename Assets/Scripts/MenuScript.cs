@@ -16,7 +16,7 @@ public class MenuScript : MonoBehaviour
                     buttonWidth, buttonHeight),
             "Start!"))
         {
-            Application.LoadLevel("Nome da Cena a transitar");
+            Application.LoadLevel("teste");
         }
 
 

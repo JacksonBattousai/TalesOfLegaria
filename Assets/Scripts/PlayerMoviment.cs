@@ -16,8 +16,8 @@ Rigidbody2D rbody;
 	
 	// Update is called once per frame
 	void Update () {
-	
 
+        if (GameController.GetCurrentState() != GAME_STATE.IN_EXPLORATION) return;
 
 		Vector2 moviment_vector = new Vector2 (Input.GetAxisRaw ("Horizontal"), Input.GetAxisRaw ("Vertical"));
 

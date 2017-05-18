@@ -10,6 +10,7 @@ public class BattleAreaScript : MonoBehaviour {
 
     private float currentTimeCheckBattle;
 
+    public List<EnemyBehaviour> enemiesPrefab;
 	// Use this for initialization
 	void Start () {
         
@@ -30,9 +31,13 @@ public class BattleAreaScript : MonoBehaviour {
             {
                 
                 Debug.Log("Teria que entrar em batalha");
-                UIController.ShoFade();
-                GameController.instance.ChangeState(GAME_STATE.IN_BATTLE);
                 
+                GameController.instance.ChangeState(GAME_STATE.IN_BATTLE);
+                UIController.ShowFade();
+                //Nessa etapa poderiamos criar um random para passar varios inimigos, mas como vamos mandar só um
+                //ele esta sendo enviado no enemiesPrefabs na posição 0.
+                
+                BattleController.instance.SetBattle(enemiesPrefab[Random.Range(0,enemiesPrefab.Count)]);
             }
 
         }

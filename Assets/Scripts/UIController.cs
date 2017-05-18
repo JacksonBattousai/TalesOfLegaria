@@ -18,7 +18,7 @@ public class UIController : MonoBehaviour {
 		
 	}
 
-    public static void ShoFade()
+    public static void ShowFade()
     {
         instance.fade.SetTrigger("Show");
     }

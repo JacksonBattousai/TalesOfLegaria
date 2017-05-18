@@ -6,7 +6,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{5D75818B-466E-C7C2-B2A8-75CA4F17188E}</ProjectGuid>
+    <ProjectGuid>{0BFF7FF2-0733-C59D-FC1F-CAB9421F859A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -49,6 +49,7 @@
      <Compile Include="Assets\Scripts\BattleAreaScript.cs" />
      <Compile Include="Assets\Scripts\BattleController.cs" />
      <Compile Include="Assets\Scripts\CameraFolow.cs" />
+     <Compile Include="Assets\Scripts\EnemyMoviment.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\LoadScript.cs" />
      <Compile Include="Assets\Scripts\MenuScript.cs" />
@@ -110,7 +111,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{9AF0D864-E340-1301-724B-CF54EB90BE7F}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
+      <Project>{9C82A01B-A719-EEDF-C46A-A324F7E78179}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,21 +1,33 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMoviment : MonoBehaviour {
+public class PlayerMoviment : LifeBase {
+
+    private BattleController battleController;
+
+
+
 
 Rigidbody2D rbody;
  Animator anim;
 	// Use this for initialization
 	void Start () {
-		
+        base.Start();
 		rbody = GetComponent<Rigidbody2D>();
 		anim = GetComponent<Animator>();
-
+        battleController = BattleController.instance;
 	}
-	
-	// Update is called once per frame
-	void Update () {
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            UseAttack();
+        }
+    }
+    // Update is called once per frame
+    void FixedUpdate () {
 
         if (GameController.GetCurrentState() != GAME_STATE.IN_EXPLORATION) return;
 
@@ -34,6 +46,24 @@ Rigidbody2D rbody;
 		rbody.MovePosition (rbody.position + moviment_vector * Time.deltaTime*70);
 
 }
+    public override void OnDamage()
+    {
+        
+    }
+
+    public override void OnDie()
+    {
+        
+    }
 
 
+    public void UseAttack()
+    {
+        if (battleController.isplayerTurn) { 
+            GameObject tempAttack=Instantiate(attacks[0].gameObject, transform.position,transform.rotation) as GameObject;
+            tempAttack.GetComponent<AttackBehaviour>().Use(battleController.enemy);
+            battleController.isplayerTurn = false;
+
+        }
+    }
 }

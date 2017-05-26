@@ -11,6 +11,8 @@ public abstract class LifeBase : MonoBehaviour {
 
     protected BattleController btController;
 
+    public List<AttackBehaviour> attacks;
+
 	protected void Start () {
         currentLife = life;
         btController = FindObjectOfType(typeof(BattleController)) as BattleController;

@@ -22,7 +22,7 @@ public class EnemyBehaviour : LifeBase {
 
     public override void OnDie()
     {
-        
+        Destroy(gameObject);
     }
 
 }

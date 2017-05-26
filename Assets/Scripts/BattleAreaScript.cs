@@ -8,19 +8,28 @@ public class BattleAreaScript : MonoBehaviour {
     public float percentBattleFactor;
     public float timeToCheckBattle;
 
-    private float currentTimeCheckBattle;
+    
 
     public List<EnemyBehaviour> enemiesPrefab;
-	// Use this for initialization
-	void Start () {
+    private float currentTimeCheckBattle;
+    
+    private PlayerMoviment player;
+
+
+    void Start () {
+        player = FindObjectOfType(typeof(PlayerMoviment)) as PlayerMoviment;
         
     }
 	
 	// Update is called once per frame
 	void Update () {
 
-        if (GameController.GetCurrentState() != GAME_STATE.IN_EXPLORATION) return;
+        if (GameController.GetCurrentState() != GAME_STATE.IN_EXPLORATION ) return;
+        //era pra fazer o personagem ficar parado e não entrar em batalha.
+        //if (GameController.GetCurrentState() != GAME_STATE.IN_EXPLORATION || player.GetComponent<Rigidbody>().velocity==Vector3.zero ) return;
+
         currentTimeCheckBattle += Time.deltaTime;
+        
 
         if (currentTimeCheckBattle > timeToCheckBattle)
         {
@@ -38,6 +47,7 @@ public class BattleAreaScript : MonoBehaviour {
                 //ele esta sendo enviado no enemiesPrefabs na posição 0.
                 
                 BattleController.instance.SetBattle(enemiesPrefab[Random.Range(0,enemiesPrefab.Count)]);
+                
             }
 
         }
@@ -45,7 +55,7 @@ public class BattleAreaScript : MonoBehaviour {
 
     void OnTriggerEnter(Collider obj) {
         Debug.Log("Colidiu");
-        if (obj.CompareTag("PlayerMoviment"))
+        if (obj.CompareTag("Player"))
         {
             Debug.Log("Colidiu");
         }

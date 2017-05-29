@@ -5,9 +5,12 @@ using UnityEngine;
 
 public class EnemyBehaviour : LifeBase {
 
+    public EnemyBehaviour enemy;
+    private PlayerMoviment player;
 	// Use this for initialization
 	void Start () {
-        base.Start();
+        base.Awake();
+        player = FindObjectOfType(typeof(PlayerMoviment)) as PlayerMoviment;
 	}
 	
 	// Update is called once per frame
@@ -23,6 +26,17 @@ public class EnemyBehaviour : LifeBase {
     public override void OnDie()
     {
         Destroy(gameObject);
+    }
+
+
+    public void UseAttack()
+    {
+        
+            GameObject tempAttack = Instantiate(attacks[0].gameObject, transform.position, transform.rotation) as GameObject;
+            tempAttack.GetComponent<AttackBehaviour>().Use(player);
+            
+
+        
     }
 
 }

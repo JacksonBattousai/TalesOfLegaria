@@ -13,7 +13,7 @@ public abstract class LifeBase : MonoBehaviour {
 
     public List<AttackBehaviour> attacks;
 
-	protected void Start () {
+	protected void Awake () {
         currentLife = life;
         btController = FindObjectOfType(typeof(BattleController)) as BattleController;
 	}
@@ -37,4 +37,9 @@ public abstract class LifeBase : MonoBehaviour {
     public abstract void OnDamage();
 
     public abstract void OnDie();
+
+    public float GetLife()
+    {
+        return currentLife;
+    }
 }

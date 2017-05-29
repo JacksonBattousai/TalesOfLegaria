@@ -14,7 +14,7 @@ Rigidbody2D rbody;
  Animator anim;
 	// Use this for initialization
 	void Start () {
-        base.Start();
+        base.Awake();
 		rbody = GetComponent<Rigidbody2D>();
 		anim = GetComponent<Animator>();
         battleController = BattleController.instance;

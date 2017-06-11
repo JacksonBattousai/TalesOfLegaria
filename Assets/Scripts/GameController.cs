@@ -17,8 +17,6 @@ public class GameController : MonoBehaviour {
     private GAME_STATE currentState;
     private GAME_STATE nextState;
 
-
-
     public static GameController instance;
 
 	// Use this for initialization
@@ -47,9 +45,7 @@ public class GameController : MonoBehaviour {
     public void ChangeState(GAME_STATE newState)
     {
         nextState = newState;
-
-        
-
+		Debug.Log("Estado" + newState);
         switch (nextState)
         {
             case GAME_STATE.IN_EXPLORATION:
@@ -63,7 +59,6 @@ public class GameController : MonoBehaviour {
                 {
                     battleArena.gameObject.SetActive(true);
                     cameraExploration.gameObject.SetActive(false);
-
                     break;
                 }
         }

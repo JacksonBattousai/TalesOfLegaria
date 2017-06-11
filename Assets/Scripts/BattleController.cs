@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BattleController : MonoBehaviour {
-    public Transform positionPlayer;
+    
+	public Transform positionPlayer;
     public Transform positionEnemy;
-    public bool isplayerTurn = true;
+    
+	public bool isplayerTurn = true;
     public static BattleController instance;
     private PlayerMoviment player;
     public EnemyBehaviour enemy;
@@ -13,6 +15,7 @@ public class BattleController : MonoBehaviour {
     private float lastLifeEnemy;
     private float lastLifePlayer;
     // Use this for initialization
+
     void Awake () {
         instance = this;
         player = FindObjectOfType(typeof(PlayerMoviment)) as PlayerMoviment;
@@ -49,8 +52,8 @@ public class BattleController : MonoBehaviour {
         enemy = tempEnemy.GetComponent<EnemyBehaviour>();
         lastLifeEnemy = enemy.GetLife();
         lastPositionPlayer = player.transform.position;
-        player.GetComponent<Rigidbody>().velocity = Vector3.zero;
-        player.transform.position = positionPlayer.position;
+        player.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+		//player.transform.position = positionPlayer.position;
         lastLifePlayer = player.GetLife();
         isplayerTurn = true;
     }
@@ -58,7 +61,7 @@ public class BattleController : MonoBehaviour {
     public void ExitBattle()
     {
         player.transform.position = lastPositionPlayer;
-        if(enemy!=null)Destroy(enemy.gameObject);
+        if(enemy!=null) Destroy(enemy.gameObject);
 
         GameController.instance.ChangeState(GAME_STATE.IN_EXPLORATION);
         UIController.ShowFade();

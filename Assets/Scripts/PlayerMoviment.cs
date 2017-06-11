@@ -6,26 +6,28 @@ using UnityEngine;
 public class PlayerMoviment : LifeBase {
 
     private BattleController battleController;
+	public Transform playerPosition;
+	public Transform enemyPosition;
+	Rigidbody2D rbody;
+ 	Animator anim;
 
-
-
-
-Rigidbody2D rbody;
- Animator anim;
 	// Use this for initialization
 	void Start () {
         base.Awake();
-		rbody = GetComponent<Rigidbody2D>();
-		anim = GetComponent<Animator>();
-        battleController = BattleController.instance;
+		rbody 				= GetComponent<Rigidbody2D>();
+		anim 				= GetComponent<Animator>();
+        battleController 	= BattleController.instance;
 	}
-    private void Update()
+    
+
+	void Update()
     {
         if (Input.GetKeyDown(KeyCode.T))
         {
             UseAttack();
         }
     }
+
     // Update is called once per frame
     void FixedUpdate () {
 
@@ -45,7 +47,8 @@ Rigidbody2D rbody;
 
 		rbody.MovePosition (rbody.position + moviment_vector * Time.deltaTime*70);
 
-}
+	}
+
     public override void OnDamage()
     {
         
@@ -59,8 +62,9 @@ Rigidbody2D rbody;
 
     public void UseAttack()
     {
-        if (battleController.isplayerTurn) { 
-            GameObject tempAttack=Instantiate(attacks[0].gameObject, transform.position,transform.rotation) as GameObject;
+        if (battleController.isplayerTurn) {
+            
+			GameObject tempAttack=Instantiate(attacks[0].gameObject, playerPosition.transform.position, playerPosition.transform.rotation) as GameObject;
             tempAttack.GetComponent<AttackBehaviour>().Use(battleController.enemy);
             battleController.isplayerTurn = false;
 

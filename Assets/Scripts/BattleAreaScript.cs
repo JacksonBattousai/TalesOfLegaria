@@ -6,9 +6,7 @@ public class BattleAreaScript : MonoBehaviour {
 
     
     public float percentBattleFactor;
-    public float timeToCheckBattle;
-
-    
+    public float timeToCheckBattle;    
 
     public List<EnemyBehaviour> enemiesPrefab;
     private float currentTimeCheckBattle;
@@ -28,36 +26,38 @@ public class BattleAreaScript : MonoBehaviour {
         //era pra fazer o personagem ficar parado e não entrar em batalha.
         //if (GameController.GetCurrentState() != GAME_STATE.IN_EXPLORATION || player.GetComponent<Rigidbody>().velocity==Vector3.zero ) return;
 
-        currentTimeCheckBattle += Time.deltaTime;
-        
-
-        if (currentTimeCheckBattle > timeToCheckBattle)
-        {
-            currentTimeCheckBattle = 0;
-            float randPercent = Random.Range(0, 100);
-
-            if (randPercent <= percentBattleFactor)
-            {
-                
-                Debug.Log("Teria que entrar em batalha");
-                
-                GameController.instance.ChangeState(GAME_STATE.IN_BATTLE);
-                UIController.ShowFade();
-                //Nessa etapa poderiamos criar um random para passar varios inimigos, mas como vamos mandar só um
-                //ele esta sendo enviado no enemiesPrefabs na posição 0.
-                
-                BattleController.instance.SetBattle(enemiesPrefab[Random.Range(0,enemiesPrefab.Count)]);
-                
-            }
-
-        }
+//        currentTimeCheckBattle += Time.deltaTime;
+//        
+//
+//        if (currentTimeCheckBattle > timeToCheckBattle)
+//        {
+//            currentTimeCheckBattle = 0;
+//            float randPercent = Random.Range(0, 100);
+//
+//            if (randPercent <= percentBattleFactor)
+//            {
+//                
+//                Debug.Log("Teria que entrar em batalha");
+//                
+//				//GameController.instance.ChangeState(GAME_STATE.IN_BATTLE);
+//                //UIController.ShowFade();
+//                //Nessa etapa poderiamos criar um random para passar varios inimigos, mas como vamos mandar só um
+//                //ele esta sendo enviado no enemiesPrefabs na posição 0.                
+//                //BattleController.instance.SetBattle(enemiesPrefab[Random.Range(0,enemiesPrefab.Count)]);
+//                
+//            }
+//
+//        }
     }
 
-    void OnTriggerEnter(Collider obj) {
-        Debug.Log("Colidiu");
+    void OnTriggerEnter2D(Collider2D obj) {
         if (obj.CompareTag("Player"))
         {
-            Debug.Log("Colidiu");
+			GameController.instance.ChangeState(GAME_STATE.IN_BATTLE);
+			UIController.ShowFade();
+			//Nessa etapa poderiamos criar um random para passar varios inimigos, mas como vamos mandar só um
+			//ele esta sendo enviado no enemiesPrefabs na posição 0.                
+			BattleController.instance.SetBattle(enemiesPrefab[Random.Range(0,enemiesPrefab.Count)]);
         }
     }
 

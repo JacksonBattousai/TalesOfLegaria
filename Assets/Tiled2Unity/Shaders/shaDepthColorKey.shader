@@ -1,4 +1,6 @@
-﻿Shader "Tiled2Unity/Depth Color Key"
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "Tiled2Unity/Depth Color Key"
 {
 	Properties
 	{
@@ -28,11 +30,10 @@
 		Pass
 		{
 			CGPROGRAM
-			#pragma vertex vert
-			#pragma fragment frag
-			#pragma multi_compile DUMMY PIXELSNAP_ON
-			#include "UnityCG.cginc"
-			#include "Tiled2Unity.cginc"
+#pragma vertex vert
+#pragma fragment frag
+#pragma multi_compile DUMMY PIXELSNAP_ON
+#include "UnityCG.cginc"
 
 			struct appdata_t
 			{

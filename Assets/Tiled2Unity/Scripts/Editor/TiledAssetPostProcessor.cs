@@ -137,7 +137,7 @@ namespace Tiled2Unity
             modelImporter.importMaterials = false;
 
 #if UNITY_5_6_OR_NEWER
-            modelImporter.keepQuads = true;
+            // Note: could do unoptimize mesh here with 5.6 or newer
 #endif
         }
 

@@ -60,6 +60,9 @@
      <Compile Include="Assets\Scripts\Movimento.cs" />
      <Compile Include="Assets\Scripts\OptionScript.cs" />
      <Compile Include="Assets\Scripts\PlayerMoviment.cs" />
+     <Compile Include="Assets\Scripts\TextBoxManega.cs" />
+     <Compile Include="Assets\Scripts\TextImporter.cs" />
+     <Compile Include="Assets\Scripts\TrocaImagen.cs" />
      <Compile Include="Assets\Scripts\UIController.cs" />
      <Compile Include="Assets\Scripts\Warp.cs" />
      <Compile Include="Assets\Scripts\collection.cs" />
@@ -80,6 +83,7 @@
      <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\TiledInitialShaderProperties.cs" />
      <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\TiledMap.cs" />
      <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\TmxObject.cs" />
+     <Compile Include="Assets\textos.cs" />
      <None Include="Assets\Tiled2Unity\Shaders\shaDefault.shader" />
      <None Include="Assets\Tiled2Unity\Prefabs\_ReadMe.txt" />
      <None Include="Assets\Tiled2Unity\Shaders\shaTiledMap.shader" />
@@ -98,6 +102,7 @@
      <None Include="Assets\Tiled2Unity\Imported\Motanha.tiled2unity.xml" />
      <None Include="Assets\Tiled2Unity\Shaders\shaColorKey.shader" />
      <None Include="Assets\Tiled2Unity\Shaders\shaDepthColorKey.shader" />
+     <None Include="Assets\exemplo.txt" />
      <None Include="Assets\Tiled2Unity\License.txt" />
      <None Include="Assets\Tiled2Unity\Imported\cave.tiled2unity.xml" />
      <None Include="Assets\Tiled2Unity\Imported\_ReadMe.txt" />

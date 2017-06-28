@@ -22,6 +22,10 @@ public class BattleController : MonoBehaviour {
 	public float VidaCheia=300;
 	[HideInInspector]
 	public float VidaAtual;
+
+	public Image BarraVidaEnemy;
+	public float VidaCheiaEnemy=100;
+	public float VidaAtualEnemy;
     // Use this for initialization
 
     void Awake () {
@@ -36,6 +40,14 @@ public class BattleController : MonoBehaviour {
 		SistemadeVida ();
         if (Input.GetKeyDown(KeyCode.Escape))
             ExitBattle();
+		
+		if(lastLifeEnemy<15){
+			BarraVidaEnemy.fillAmount =0;
+		}
+
+		if(lastLifeEnemy==100){
+			BarraVidaEnemy.fillAmount =100;
+		}
 
         if (enemy == null)
         {
@@ -45,9 +57,12 @@ public class BattleController : MonoBehaviour {
         {
             if(! isplayerTurn && enemy.GetLife() != lastLifeEnemy)
             {
+				
                 enemy.UseAttack();
                 lastLifeEnemy = enemy.GetLife();
-				Debug.Log(lastLifeEnemy);
+				VidaAtualEnemy = lastLifeEnemy;
+				BarraVidaEnemy.fillAmount = ((1 / VidaCheiaEnemy) * VidaAtualEnemy);
+
             }
             else if(! isplayerTurn && lastLifePlayer != player.GetLife())
             {
@@ -91,6 +106,8 @@ public class BattleController : MonoBehaviour {
 			VidaAtual = 0;
 			Morreu ();
 		}
+
+
 	}
 	void Morreu(){
 		

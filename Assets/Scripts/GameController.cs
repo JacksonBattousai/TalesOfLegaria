@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public enum GAME_STATE
 {
     IN_EXPLORATION,

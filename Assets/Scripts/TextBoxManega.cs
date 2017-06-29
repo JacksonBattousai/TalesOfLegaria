@@ -46,7 +46,7 @@ public class TextBoxManega : MonoBehaviour {
 		}
 
 
-		if (currentLine > endAtLine) {
+		if (currentLine == endAtLine) {
 			
 			Application.LoadLevel("teste");
 		
